@@ -51,6 +51,7 @@ class Grafo:
 	def read_data(self):
 		with open(self.file_name) as f:
 			conteudo_grafo = f.readlines()
+
 		for linha in conteudo_grafo:
 			linha = linha.split()
 			if linha[0] == 'n':
@@ -61,11 +62,14 @@ class Grafo:
 			elif linha[0] == 'e' or linha[0] == 'a':
 				arco = (int(linha[1]), int(linha[2]))
 				self.pesos[arco] = float(linha[3])
+			elif linha[0] == 'p':
+				self.num_vertices = int(linha[2])
+				self.num_arestas = int(linha[3])
 		self.num_arestas = len(self.pesos.keys())
 		if self.source == None:
 			self.source = 1
 		if self.target == None:
-			self.target = self.num_arestas
+			self.target = self.num_vertices
 
 	def transpor(self):
 		b = {}

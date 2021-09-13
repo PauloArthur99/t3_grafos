@@ -8,6 +8,8 @@ class Grafo:
 		self.pesos    = {}
 		self.num_vertices = None
 		self.num_arestas =  None
+		self.source = None
+		self.target = None
 		self.read_data()
 
 	def qtdVertices(self):
@@ -49,19 +51,21 @@ class Grafo:
 	def read_data(self):
 		with open(self.file_name) as f:
 			conteudo_grafo = f.readlines()
-
-        for linha in conteudo_grafo:
-            linha.split()
-            if linha[0] == 'n':
-                if linha[-1] == 's':
-                    self.source == linha[1]
-                else:
-                    self.target == linha[1]
-            elif linha[0] == 'e' or linha[0] == 'a':
-                arco = (int(linha[1]), int(linha[2]))
-                self.pesos[arco] = float(linha[3])
-        
-        self.num_arestas = len(self.pesos.keys())
+		for linha in conteudo_grafo:
+			linha.split()
+			if linha[0] == 'n':
+				if linha[-1] == 's':
+					self.source == linha[1]
+				else:
+					self.target == linha[1]
+			elif linha[0] == 'e' or linha[0] == 'a':
+				arco = (int(linha[1]), int(linha[2]))
+				self.pesos[arco] = float(linha[3])
+		self.num_arestas = len(self.pesos.keys())
+		if self.source == None:
+			self.source == 1
+		if self.target == None:
+			self.target == self.num_arestas
 
 	def transpor(self):
 		b = {}

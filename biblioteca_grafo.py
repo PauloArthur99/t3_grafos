@@ -52,20 +52,20 @@ class Grafo:
 		with open(self.file_name) as f:
 			conteudo_grafo = f.readlines()
 		for linha in conteudo_grafo:
-			linha.split()
+			linha = linha.split()
 			if linha[0] == 'n':
 				if linha[-1] == 's':
-					self.source == linha[1]
+					self.source = linha[1]
 				else:
-					self.target == linha[1]
+					self.target = linha[1]
 			elif linha[0] == 'e' or linha[0] == 'a':
 				arco = (int(linha[1]), int(linha[2]))
 				self.pesos[arco] = float(linha[3])
 		self.num_arestas = len(self.pesos.keys())
 		if self.source == None:
-			self.source == 1
+			self.source = 1
 		if self.target == None:
-			self.target == self.num_arestas
+			self.target = self.num_arestas
 
 	def transpor(self):
 		b = {}
@@ -73,4 +73,4 @@ class Grafo:
 			b[(key[1],key[0])]=value
 		self.pesos = b
 
-grafo1 = Grafo("teste.txt")
+grafo1 = Grafo("db128.gr")

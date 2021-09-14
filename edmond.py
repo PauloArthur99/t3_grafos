@@ -47,9 +47,14 @@ def edmond_karp(grafo,vert_origem,vert_destino):
                     
                     p.reverse()
                     return p
-                q.insert(0,vizinho)#
+                q.append(vizinho)
     return []
 
-grafo1 = Grafo("db512.gr")
+grafo1 = Grafo("db128.gr")
+
+#Observação: Por nós usarmos grafos como listas, não como matrizes, o primeiro vértice é o 1.
+
+print("Edmond Carp:\n")
 print(edmond_karp(grafo1,1,4))
+print("\nFluxo Máximo por Ford Fukerson:\n")
 print(ford_fukerson(grafo1,1,(grafo1.qtdVertices())))

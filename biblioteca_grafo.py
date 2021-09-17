@@ -61,7 +61,10 @@ class Grafo:
 					self.target = linha[1]
 			elif linha[0] == 'e' or linha[0] == 'a':
 				arco = (int(linha[1]), int(linha[2]))
-				self.pesos[arco] = float(linha[3])
+				if linha[0] == 'a':
+					self.pesos[arco] = float(linha[3])
+				else:
+					continue
 			elif linha[0] == 'p':
 				self.num_vertices = int(linha[2])
 				self.num_arestas = int(linha[3])
@@ -77,4 +80,4 @@ class Grafo:
 			b[(key[1],key[0])]=value
 		self.pesos = b
 
-grafo1 = Grafo("db128.gr")
+#grafo1 = Grafo("db128.gr")

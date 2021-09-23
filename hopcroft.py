@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 from biblioteca_grafo import Grafo
 
-def get_sets(grafo):
+def func1(grafo):
 	s1 = [0]
 	s2 = []
 	t = [False] * (grafo.qtdVertices()+1)
@@ -61,20 +61,11 @@ def DFS(grafo, mate, xx, d):
 		return False, d, mate
 	return True, d, mate
 
-def hopcroft_karp_resultado(resultado):
-	m, mate, x = resultado
-
-	print("valor: %d\n" % m)
-	print("arestas: ")
-	for v in x:
-		print("%d - %d;" % (v + 1, mate[v] + 1), end = " ")
-	print()
-
 def hopcroft_karp(grafo):
 	d = [grafo.inf] * (grafo.qtdVertices() + 2)
 	mate = [-1] * (grafo.qtdVertices() + 1)
 	
-	x, y = get_sets(grafo)
+	x, y = func1(grafo)
 	m = 0
 
 	while(True):
@@ -92,4 +83,4 @@ def hopcroft_karp(grafo):
 
 if __name__ == "__main__":
 	grafo1 = Grafo("gr512_30.gr")
-	hopcroft_karp_resultado(hopcroft_karp(grafo1))
+	hopcroft_karp(grafo1)

@@ -1,6 +1,5 @@
 c The cardinality of a maximum matching is 128.
 c Bi-partite graph
-
 p edge 256 1631
 e 1 129
 e 1 141

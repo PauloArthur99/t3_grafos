@@ -53,8 +53,7 @@ def BFS(grafo, x, mate, d):
 # DFS
 def DFS(grafo, mate, xx, d):
 	if xx != -1:
-		vizinhos = grafo.vizinhos(xx)
-		for y in vizinhos:
+		for y in grafo.vizinhos(xx):
 			if (d[mate[y]] == d[xx] + 1):
 				validez, d, mate2 = DFS(grafo, mate, mate[y], d)
 				if (validez == True):
